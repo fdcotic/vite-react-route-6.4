@@ -9,30 +9,34 @@ import Post, { loaderPost } from "../pages/Post";
 import NotFound from "../pages/NotFound";
 
 export const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <LayoutPublic />,
+  {
+    path: "/",
+    element: <LayoutPublic />,
+    errorElement: <NotFound />,
+    children: [
+      {
         errorElement: <NotFound />,
-        children:[
-            {
-                index: true,
-                element: <Home />,
-            },
-            {
-                path: '/about',
-                element: <About />,
-            },
-            {
-                path: '/blog',
-                element: <Blog />,
-                loader:loaderBlog
-            },
-            {
-                path: '/blog/:id',
-                element: <Post />,
-                loader:loaderPost
-            },
+        children: [
+          {
+            index: true,
+            element: <Home />,
+          },
+          {
+            path: "/about",
+            element: <About />,
+          },
+          {
+            path: "/blog",
+            element: <Blog />,
+            loader: loaderBlog,
+          },
+          {
+            path: "/blog/:id",
+            element: <Post />,
+            loader: loaderPost,
+          },
         ],
-    },
-    
-])
+      },
+    ],
+  },
+]);
